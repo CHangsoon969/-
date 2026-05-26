@@ -1,1443 +1,449 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>결 (Grain) — 그 감정, 혼자 삼키지 않아도 돼요</title>
-<style>
-  :root {
-    --bg:        #f7f4ef;
-    --bg2:       #f0ebe2;
-    --bg3:       #e9e2d8;
-    --accent:    #4d7f4d;
-    --accent-s:  #6a9a6a;
-    --warm:      #9a6840;
-    --warm-s:    #b8845a;
-    --text:      #26201a;
-    --text-mid:  #6e5e4e;
-    --text-dim:  #a89888;
-    --border:    #e0d6c8;
-    --card:      #ffffff;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-    background: var(--bg); color: var(--text);
-    line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#4d7f4d">
+  <meta name="color-scheme" content="light">
+  <title>결 — 육아로 지친 엄마의 마음을 돌보는 5분</title>
+  <meta name="description" content="육아하다 감정이 폭발한 적 있는 엄마를 위한 5분 감정 돌봄. 어제의 나와 비교하며 조금씩 나아지는 결.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="결 — 육아로 지친 엄마의 마음을 돌보는 5분">
+  <meta property="og:description" content="혼자 삼키지 않아도 돼요. 출시 알림을 가장 먼저 받아보세요.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="결 — 육아로 지친 엄마의 마음을 돌보는 5분">
+  <meta name="twitter:description" content="혼자 삼키지 않아도 돼요. 출시 알림을 가장 먼저 받아보세요.">
+  <link rel="stylesheet" href="/style_tokens.css">
+  <style>
+    /* landing.html 전용 스타일 — 토큰만 사용 */
+    .lp-section {
+      padding: var(--space-56) 0;
+    }
+    .lp-hero {
+      padding: var(--space-64) 0 var(--space-48);
+      text-align: center;
+    }
+    .lp-eyebrow {
+      display: inline-block;
+      font-size: var(--font-label);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: var(--space-16);
+    }
+    .lp-hero h1 {
+      font-size: var(--font-h1);
+      font-weight: var(--weight-black);
+      line-height: var(--leading-tight);
+      letter-spacing: var(--tracking-tight);
+      color: var(--text-primary);
+      margin-bottom: var(--space-20);
+    }
+    .lp-hero .sub {
+      font-size: var(--font-body);
+      line-height: var(--leading-loose);
+      color: var(--text-mid);
+      max-width: 320px;
+      margin: 0 auto;
+    }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .au1 { animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) both; }
-  .au2 { animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.1s both; }
-  .au3 { animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.22s both; }
-  .au4 { animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.34s both; }
-  .au5 { animation: fadeUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.46s both; }
+    .lp-empathy h2 {
+      font-size: var(--font-h2);
+      font-weight: var(--weight-bold);
+      line-height: var(--leading-tight);
+      color: var(--text-primary);
+      margin-bottom: var(--space-24);
+      text-align: center;
+    }
+    .lp-empathy-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-12);
+    }
+    .lp-empathy-list li {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: var(--space-16) var(--space-20);
+      font-size: var(--font-body);
+      line-height: var(--leading-base);
+      color: var(--text-primary);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-12);
+    }
+    .lp-empathy-list li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 8px;
+      height: 8px;
+      margin-top: 10px;
+      border-radius: 50%;
+      background: var(--accent-soft);
+    }
+    .lp-empathy-bridge {
+      margin-top: var(--space-32);
+      text-align: center;
+      font-size: var(--font-body);
+      line-height: var(--leading-loose);
+      color: var(--text-primary);
+      font-weight: var(--weight-semi);
+    }
+    .lp-empathy-sub {
+      margin-top: var(--space-12);
+      text-align: center;
+      font-size: var(--font-body);
+      line-height: var(--leading-loose);
+      color: var(--text-mid);
+    }
 
-  .reveal {
-    opacity: 0; transform: translateY(12px);
-    transition: opacity 0.48s cubic-bezier(0.22,1,0.36,1),
-                transform 0.48s cubic-bezier(0.22,1,0.36,1);
-  }
-  .reveal.visible { opacity: 1; transform: none; }
-  .reveal-d1 { transition-delay: 0.07s; }
-  .reveal-d2 { transition-delay: 0.14s; }
+    .lp-intro {
+      background: var(--bg-soft);
+    }
+    .lp-intro h2 {
+      font-size: var(--font-h2);
+      font-weight: var(--weight-bold);
+      line-height: var(--leading-tight);
+      color: var(--text-primary);
+      margin-bottom: var(--space-16);
+      text-align: center;
+    }
+    .lp-intro .lead {
+      font-size: var(--font-body);
+      line-height: var(--leading-loose);
+      color: var(--text-mid);
+      text-align: center;
+      max-width: 340px;
+      margin: 0 auto var(--space-32);
+    }
+    .lp-feature {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: var(--space-20) var(--space-24);
+      margin-bottom: var(--space-12);
+      border: 1px solid var(--border-color);
+    }
+    .lp-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-16);
+    }
+    .lp-feature-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      line-height: 1;
+    }
+    .lp-feature h3 {
+      font-size: var(--font-h3);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-8);
+    }
+    .lp-feature p {
+      font-size: var(--font-small);
+      line-height: var(--leading-loose);
+      color: var(--text-mid);
+    }
 
-  /* ─── HERO ─── */
-  .hero {
-    min-height: 100svh;
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    text-align: center; padding: 88px 28px 64px;
-    background: linear-gradient(160deg, #faf8f3 0%, #f0e9dc 100%);
-    position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%);
-    width: 500px; height: 500px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(90,138,90,0.07) 0%, transparent 68%);
-    pointer-events: none;
-  }
+    .lp-voices h2 {
+      font-size: var(--font-h2);
+      font-weight: var(--weight-bold);
+      line-height: var(--leading-tight);
+      color: var(--text-primary);
+      text-align: center;
+      margin-bottom: var(--space-32);
+    }
+    .lp-voice-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-16);
+    }
+    .lp-voice {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-left: 3px solid var(--accent-soft);
+      border-radius: var(--radius-md);
+      padding: var(--space-20) var(--space-20) var(--space-16);
+      margin: 0;
+    }
+    .lp-voice p {
+      font-size: var(--font-body);
+      line-height: var(--leading-loose);
+      color: var(--text-primary);
+      margin-bottom: var(--space-12);
+      font-style: italic;
+    }
+    .lp-voice footer {
+      font-size: var(--font-small);
+      color: var(--text-mid);
+    }
+    .lp-voice-note {
+      margin-top: var(--space-20);
+      text-align: center;
+      font-size: var(--font-micro);
+      color: var(--text-dim);
+    }
 
-  /* ── BRAND WORDMARK ── */
-  .brand-wordmark {
-    display: flex; align-items: baseline; justify-content: center;
-    gap: 0; margin-bottom: 10px; line-height: 1;
-  }
-  .brand-kr {
-    font-size: clamp(36px, 10vw, 44px); font-weight: 800;
-    /* 개선안 1A — 진한 포레스트 그린 (채도↑, 대비↑, 여전히 회복 신호) */
-    color: #2d5a2d;
-    /* 개선안 1B — 웜 브라운 (결 = 결(결)이라는 따뜻함, 안도감 계열) */
-    /* color: var(--warm); */
-    letter-spacing: -0.02em;
-  }
-  .brand-dot {
-    font-size: clamp(22px, 6vw, 28px); font-weight: 300;
-    color: #2d5a2d; opacity: 0.3;
-    margin: 0 6px; letter-spacing: 0;
-  }
-  .brand-en {
-    font-size: clamp(20px, 5.5vw, 26px); font-weight: 300;
-    color: #2d5a2d; opacity: 0.7; letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-  .brand-sub {
-    display: flex; align-items: center; justify-content: center;
-    gap: 10px; font-size: 11px; font-weight: 500;
-    color: var(--text-dim); letter-spacing: 0.22em;
-    text-transform: uppercase; opacity: 0.65;
-    margin-bottom: 34px;
-  }
-  .brand-sub::before, .brand-sub::after {
-    content: ''; display: block; width: 20px; height: 1px;
-    background: var(--text-dim); opacity: 0.4;
-  }
+    .lp-cta {
+      padding: var(--space-64) 0 var(--space-48);
+      text-align: center;
+    }
+    .lp-cta h2 {
+      font-size: var(--font-h2);
+      font-weight: var(--weight-bold);
+      line-height: var(--leading-tight);
+      color: var(--text-primary);
+      margin-bottom: var(--space-12);
+    }
+    .lp-cta .lead {
+      font-size: var(--font-body);
+      line-height: var(--leading-loose);
+      color: var(--text-mid);
+      margin-bottom: var(--space-32);
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .lp-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--touch-cta);
+      padding: 0 var(--space-40);
+      border-radius: var(--radius-pill);
+      background: var(--accent);
+      color: #fff;
+      font-size: 17px;
+      font-weight: var(--weight-bold);
+      text-decoration: none;
+      box-shadow: var(--shadow-accent);
+      transition: var(--btn-transition);
+      min-width: 240px;
+    }
+    .lp-cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 36px rgba(90,138,90,0.32);
+    }
+    .lp-cta-note {
+      margin-top: var(--space-20);
+      font-size: var(--font-small);
+      color: var(--text-mid);
+      line-height: var(--leading-base);
+    }
 
-  .hero h1 { margin-bottom: 22px; }
-  .h1-scene {
-    display: block;
-    font-size: clamp(15px, 4vw, 20px); font-weight: 400;
-    color: var(--text-mid); line-height: 1.5;
-    margin-bottom: 10px; letter-spacing: -0.005em;
-  }
-  .h1-main {
-    display: block;
-    font-size: clamp(44px, 12vw, 80px); font-weight: 900;
-    color: var(--text); line-height: 1.08; letter-spacing: -0.045em;
-  }
-  .h1-main .a { color: var(--accent); }
+    .lp-crisis {
+      padding: var(--space-24) 0 var(--space-32);
+    }
 
-  .hero-sub {
-    font-size: clamp(15px, 3.8vw, 17px); color: var(--text-mid);
-    max-width: 300px; line-height: 1.9; margin-bottom: 48px;
-    letter-spacing: -0.005em;
-  }
+    .lp-footer {
+      padding: var(--space-32) 0 var(--space-48);
+      text-align: center;
+      font-size: var(--font-micro);
+      color: var(--text-dim);
+      border-top: 1px solid var(--border-color);
+    }
+    .lp-footer p + p {
+      margin-top: var(--space-12);
+    }
 
-  .btn {
-    background: var(--accent); color: #fff;
-    font-size: 17px; font-weight: 700;
-    padding: 20px 56px; border-radius: 50px; border: none; cursor: pointer;
-    letter-spacing: -0.01em;
-    transition: transform 0.18s cubic-bezier(0.22,1,0.36,1),
-                box-shadow 0.18s cubic-bezier(0.22,1,0.36,1);
-    box-shadow: 0 4px 22px rgba(90,138,90,0.24);
-  }
-  .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 36px rgba(90,138,90,0.32); }
-  .btn:active { transform: translateY(-1px); }
-  .btn-outline {
-    background: transparent; color: var(--accent);
-    font-size: 15px; font-weight: 600;
-    padding: 14px 40px; border-radius: 50px;
-    border: 1.5px solid var(--accent); cursor: pointer;
-    letter-spacing: -0.01em;
-    transition: background 0.18s, color 0.18s;
-  }
-  .btn-outline:hover { background: rgba(90,138,90,0.07); }
-  .btn-note { font-size: 14px; color: var(--text-mid); margin-top: 36px; font-weight: 500; letter-spacing: -0.01em; }
+    .lp-founder-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: var(--space-24) var(--space-24);
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-20);
+    }
+    .lp-founder-avatar {
+      font-size: 40px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .lp-founder-name {
+      font-size: var(--font-h3);
+      font-weight: var(--weight-bold);
+      color: var(--text-primary);
+      margin-bottom: var(--space-12);
+    }
+    .lp-founder-bio {
+      font-size: var(--font-body);
+      line-height: var(--leading-loose);
+      color: var(--text-mid);
+    }
 
-  /* ─── BETA ─── */
-  .beta { padding: 48px 20px; background: var(--bg2); }
-  .beta-inner { max-width: 480px; margin: 0 auto; }
-  .beta-eyebrow {
-    display: block; text-align: center; font-size: 10px; letter-spacing: 0.18em;
-    color: var(--accent-s); text-transform: uppercase; margin-bottom: 14px;
-  }
-  .beta h2 {
-    font-size: clamp(20px, 5vw, 28px); font-weight: 800;
-    letter-spacing: -0.03em; line-height: 1.3;
-    text-align: center; color: var(--text); margin-bottom: 8px;
-  }
-  .beta h2 .a { color: var(--accent); }
-  .beta-sub {
-    text-align: center; font-size: 14px; color: var(--text-mid);
-    line-height: 1.8; margin-bottom: 28px;
-  }
-  .beta-cards { display: flex; flex-direction: column; gap: 8px; }
-  .beta-card {
-    background: var(--card); border-radius: 14px;
-    padding: 18px 20px; border: 1px solid var(--border);
-    display: grid; grid-template-columns: 32px 1fr; gap: 0 14px;
-    align-items: flex-start;
-  }
-  .beta-card.highlight {
-    border-color: var(--accent);
-    background: rgba(77,127,77,0.04);
-  }
-  .beta-icon {
-    width: 32px; height: 32px; border-radius: 8px;
-    background: rgba(77,127,77,0.1);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px; font-weight: 800; color: var(--accent);
-    flex-shrink: 0; margin-top: 1px;
-  }
-  .beta-card h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; letter-spacing: -0.01em; }
-  .beta-card p { font-size: 12px; color: var(--text-mid); line-height: 1.7; }
-  .beta-limit {
-    text-align: center; margin-top: 20px;
-    font-size: 13px; color: var(--text-dim); line-height: 1.7;
-  }
-  .beta-limit strong { color: var(--accent); font-weight: 700; }
+    /* a11y — 사용자가 모션 감소를 선호하면 애니메이션 차단 */
+    @media (prefers-reduced-motion: reduce) {
+      .au, .au-1, .au-2, .au-3, .au-4 {
+        animation: none !important;
+      }
+    }
 
-  /* ─── STORY ─── */
-  .story { padding: 52px 20px; max-width: 520px; margin: 0 auto; }
-  .story-intro {
-    text-align: center; margin-bottom: 40px;
-    font-size: clamp(17px, 4.5vw, 21px); color: var(--text-dim); letter-spacing: 0.01em; line-height: 1.8;
-  }
-  .story-intro span { font-size: clamp(22px, 5.5vw, 28px); }
-  .scene { margin-bottom: 34px; }
-  .scene-time {
-    display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.02em;
-    color: var(--accent); background: rgba(77,127,77,0.1);
-    padding: 3px 11px; border-radius: 20px; margin-bottom: 14px;
-  }
-  .scene-text {
-    font-size: clamp(16px, 4vw, 19px); font-weight: 600;
-    line-height: 1.7; color: var(--text); letter-spacing: -0.01em;
-  }
-  .scene-text .quiet {
-    display: block; margin-top: 8px;
-    font-size: clamp(14px, 3.4vw, 15px); font-weight: 400;
-    color: var(--text-mid); line-height: 1.82;
-  }
-  .scene-speaker {
-    display: inline-block; margin-top: 10px;
-    font-size: 11px; color: var(--text-dim); letter-spacing: 0.05em;
-    border-left: 2px solid var(--border); padding-left: 9px;
-  }
+    .lp-scroll-hint {
+      margin-top: var(--space-32);
+      display: flex;
+      justify-content: center;
+      opacity: 0.6;
+      animation: scrollBounce 2s var(--anim-ease) 1.2s 3;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
 
-  /* ─── VISION ─── */
-  .vision { padding: 44px 20px 52px; background: var(--bg2); }
-  .vision-inner { max-width: 500px; margin: 0 auto; }
-  .vision-label {
-    display: block; text-align: center; font-size: 10px; letter-spacing: 0.16em;
-    color: var(--text-dim); text-transform: uppercase; margin-bottom: 18px;
-  }
-  .vision h2 {
-    font-size: clamp(26px, 6.2vw, 40px); font-weight: 800;
-    letter-spacing: -0.03em; line-height: 1.28;
-    margin-bottom: 24px; text-align: center; color: var(--text);
-  }
-  .vision h2 .a { color: var(--accent); }
-  .vision-card {
-    background: var(--card); border-radius: 18px;
-    padding: 18px 20px; margin-bottom: 8px;
-    border: 1px solid var(--border);
-    box-shadow: 0 2px 12px rgba(42,35,24,0.05);
-  }
-  .vision-card p { font-size: 15px; color: var(--text-mid); line-height: 1.75; font-style: italic; }
-  .vision-card strong {
-    font-style: normal; color: var(--text); font-weight: 700;
-    display: block; margin-top: 6px; font-size: 16px; line-height: 1.5;
-  }
-  .vision-card-source {
-    display: block; font-size: 11px; color: var(--text-dim);
-    margin-top: 8px; letter-spacing: 0.04em;
-    border-left: 2px solid var(--border); padding-left: 9px;
-  }
-
-  /* ─── HOW ─── */
-  .how { padding: 48px 20px; max-width: 480px; margin: 0 auto; }
-  .section-label {
-    display: block; text-align: center; font-size: 10px; letter-spacing: 0.16em;
-    color: var(--text-dim); text-transform: uppercase; margin-bottom: 22px;
-  }
-  .how-list { display: flex; flex-direction: column; gap: 3px; }
-  .how-item {
-    display: grid; grid-template-columns: 46px 1fr;
-    background: var(--card); border-radius: 13px; padding: 19px 18px 19px 0;
-    border: 1px solid var(--border);
-  }
-  .how-n {
-    display: flex; align-items: flex-start; justify-content: center;
-    padding-top: 1px; font-size: 20px; font-weight: 800;
-    color: var(--border); letter-spacing: -0.04em;
-  }
-  .how-b h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; color: var(--text); }
-  .how-b p { font-size: 13px; color: var(--text-mid); line-height: 1.78; }
-  .badge {
-    display: inline-block; font-size: 10px;
-    background: rgba(77,127,77,0.1); color: var(--accent);
-    padding: 2px 8px; border-radius: 20px; margin-top: 6px; letter-spacing: 0.04em;
-  }
-
-  /* ─── HOOK ─── */
-  .hook { padding: 52px 20px 56px; text-align: center; background: var(--bg3); }
-  .hook-inner { max-width: 400px; margin: 0 auto; }
-  .hook-eyebrow {
-    font-size: 10px; letter-spacing: 0.16em; color: var(--accent-s);
-    text-transform: uppercase; margin-bottom: 14px; display: block;
-  }
-  .hook h2 {
-    font-size: clamp(21px, 5.2vw, 32px); font-weight: 800;
-    letter-spacing: -0.03em; line-height: 1.3; margin-bottom: 12px; color: var(--text);
-  }
-  .hook h2 .a { color: var(--accent); }
-  .hook-p {
-    font-size: clamp(14px, 3.4vw, 15px); color: var(--text-mid);
-    line-height: 1.9; margin-bottom: 28px;
-  }
-  .hook-p strong { color: var(--text); font-weight: 600; }
-  .days { display: flex; justify-content: center; gap: 4px; flex-wrap: wrap; margin-bottom: 16px; }
-  .day {
-    width: 30px; height: 30px; border-radius: 50%;
-    background: var(--bg); border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 10px; color: var(--text-dim); font-weight: 600;
-    transition: transform 0.18s;
-  }
-  .day:hover { transform: scale(1.12); }
-  .day.on { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .day.now {
-    background: var(--bg); color: var(--accent); border-color: var(--accent);
-    font-weight: 800; box-shadow: 0 0 0 3px rgba(77,127,77,0.2);
-  }
-  .hook-note { font-size: 12px; color: var(--text-dim); margin-top: 4px; }
-
-  /* ─── TRUST STRIP ─── */
-  .trust { padding: 28px 20px; max-width: 460px; margin: 0 auto; }
-  .trust-items { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
-  .trust-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-dim); }
-  .trust-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-s); flex-shrink: 0; }
-
-  /* ─── GRADUATION ─── */
-  .graduation {
-    padding: 60px 20px 64px;
-    background: linear-gradient(160deg, #f0ede6 0%, #e8f0e8 100%);
-    text-align: center;
-  }
-  .graduation-inner { max-width: 480px; margin: 0 auto; }
-  .graduation-eyebrow {
-    display: block; font-size: 10px; letter-spacing: 0.18em;
-    color: var(--accent-s); text-transform: uppercase; margin-bottom: 14px;
-  }
-  .graduation h2 {
-    font-size: clamp(22px, 5.6vw, 36px); font-weight: 800;
-    letter-spacing: -0.03em; line-height: 1.22; margin-bottom: 12px; color: var(--text);
-  }
-  .graduation h2 .a { color: var(--accent); }
-  .graduation-sub {
-    font-size: clamp(14px, 3.5vw, 15px); color: var(--text-mid);
-    line-height: 1.85; margin-bottom: 36px;
-  }
-  .grad-card-wrap {
-    position: relative; display: inline-block;
-    margin-bottom: 40px;
-  }
-  .grad-card {
-    width: 220px; background: var(--card);
-    border-radius: 20px; padding: 26px 22px 20px;
-    box-shadow: 0 8px 40px rgba(42,35,24,0.13), 0 2px 8px rgba(77,127,77,0.1);
-    border: 1px solid rgba(77,127,77,0.15);
-    position: relative; overflow: hidden;
-    text-align: left;
-  }
-  .grad-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--accent) 0%, #8bc48b 100%);
-  }
-  .grad-card-title {
-    font-size: 20px; font-weight: 900; color: var(--text);
-    line-height: 1.35; margin-bottom: 16px; letter-spacing: -0.025em;
-  }
-  .grad-card-logo {
-    font-size: 11px; letter-spacing: 0.14em; color: var(--text-dim);
-    text-transform: uppercase; margin-bottom: 14px;
-  }
-  .grad-card-stats {
-    display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px;
-  }
-  .grad-stat {
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .grad-stat-label {
-    font-size: 10px; color: var(--text-dim); letter-spacing: 0.04em;
-  }
-  .grad-stat-value {
-    font-size: 11px; font-weight: 700; color: var(--accent);
-  }
-  /* 미션 로테이션 */
-  .mission-rotate {
-    position: relative; overflow: hidden;
-    height: 1.4em; /* 한 줄 높이 고정 */
-  }
-  .mission-rotate span {
-    position: absolute; right: 0;
-    font-size: 11px; font-weight: 700; color: var(--accent);
-    white-space: nowrap;
-    opacity: 0; transform: translateY(8px);
-    transition: opacity 0.4s, transform 0.4s;
-  }
-  .mission-rotate span.active {
-    opacity: 1; transform: translateY(0);
-  }
-  .grad-temp-bar {
-    height: 3px; background: var(--border); border-radius: 2px;
-    margin-bottom: 14px; overflow: hidden;
-  }
-  .grad-temp-fill {
-    height: 100%; width: 68%; border-radius: 2px;
-    background: linear-gradient(90deg, #d4a96a 0%, var(--accent) 100%);
-  }
-  .grad-card-msg {
-    font-size: 11px; color: var(--text-mid); line-height: 1.7;
-    font-style: italic; border-top: 1px solid var(--border); padding-top: 10px;
-  }
-  .grad-card-shadow {
-    position: absolute; bottom: -12px; right: -12px;
-    width: 220px; height: 100%;
-    background: var(--card); border-radius: 20px; z-index: -1;
-    border: 1px solid var(--border); opacity: 0.5;
-    transform: rotate(3deg);
-  }
-  .graduation-features {
-    display: flex; flex-direction: column; gap: 12px;
-    text-align: left; margin-bottom: 32px;
-  }
-  .grad-feature {
-    background: rgba(255,255,255,0.7); border-radius: 14px;
-    padding: 16px 18px; border: 1px solid rgba(77,127,77,0.12);
-    display: flex; align-items: flex-start; gap: 14px;
-  }
-  .grad-feature-icon {
-    font-size: 20px; flex-shrink: 0; line-height: 1;
-    margin-top: 1px;
-  }
-  .grad-feature-text h4 {
-    font-size: 15px; font-weight: 700; color: var(--text);
-    margin-bottom: 2px; letter-spacing: -0.01em; line-height: 1.4;
-  }
-  .grad-feature-text .feat-sub {
-    font-size: 12px; font-weight: 500; color: var(--accent);
-    opacity: 0.8; margin-bottom: 4px; letter-spacing: 0.01em;
-  }
-  .grad-feature-text p {
-    font-size: 12px; color: var(--text-mid); line-height: 1.7;
-  }
-  .graduation-note {
-    font-size: 12px; color: var(--text-dim); line-height: 1.8;
-  }
-
-  /* ─── MORE FEATURES ─── */
-  .more-features-btn {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    margin: 28px auto 0; padding: 13px 24px; border-radius: 50px;
-    border: 1.5px solid var(--border); background: transparent;
-    font-size: 14px; font-weight: 600; color: var(--text-mid);
-    cursor: pointer; letter-spacing: -0.01em;
-    transition: all 0.2s; -webkit-tap-highlight-color: transparent;
-  }
-  .more-features-btn:hover { border-color: var(--accent-s); color: var(--accent); background: rgba(77,127,77,0.04); }
-  .more-features-btn svg { flex-shrink: 0; transition: transform 0.3s; }
-  .more-features-btn.open svg { transform: rotate(180deg); }
-
-  /* 기능 팝업 시트 */
-  .features-sheet-overlay {
-    position: fixed; inset: 0; background: rgba(38,32,26,0.38);
-    z-index: 200; opacity: 0; pointer-events: none;
-    transition: opacity 0.28s;
-  }
-  .features-sheet-overlay.open { opacity: 1; pointer-events: all; }
-  .features-sheet {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    background: var(--card); border-radius: 24px 24px 0 0;
-    padding: 0 20px 40px; z-index: 201;
-    transform: translateY(100%); transition: transform 0.36s cubic-bezier(0.22,1,0.36,1);
-    max-height: 85svh; overflow-y: auto;
-  }
-  .features-sheet.open { transform: translateY(0); }
-  .sheet-handle { width: 36px; height: 4px; border-radius: 2px; background: var(--border); margin: 14px auto 20px; }
-  .sheet-title { font-size: 18px; font-weight: 800; color: var(--text); margin-bottom: 6px; }
-  .sheet-sub { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; line-height: 1.6; }
-  .sheet-feature-list { display: flex; flex-direction: column; gap: 0; }
-  .sheet-feature {
-    display: flex; align-items: flex-start; gap: 14px;
-    padding: 16px 0; border-bottom: 1px solid var(--border);
-  }
-  .sheet-feature:last-child { border-bottom: none; }
-  .sheet-feature-icon {
-    width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .sheet-feature-body h4 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-  .sheet-feature-body p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
-  .sheet-badge {
-    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.04em;
-    padding: 2px 8px; border-radius: 20px; margin-top: 5px;
-  }
-  .sheet-badge.free { background: rgba(77,127,77,0.1); color: var(--accent); }
-  .sheet-badge.std { background: rgba(77,127,77,0.18); color: #2e6030; }
-  .sheet-badge.prem { background: rgba(154,104,64,0.12); color: var(--warm); }
-  .sheet-close {
-    width: 100%; padding: 15px; border-radius: 14px; background: var(--bg2);
-    border: none; font-size: 15px; font-weight: 700; color: var(--text-mid);
-    cursor: pointer; margin-top: 20px;
-  }
-
-  /* ─── PRICING ─── */
-  .pricing { padding: 56px 20px; max-width: 520px; margin: 0 auto; }
-  .pricing h2 {
-    font-size: clamp(21px, 5.2vw, 30px); font-weight: 800;
-    letter-spacing: -0.03em; line-height: 1.28;
-    margin-bottom: 6px; text-align: center; color: var(--text);
-  }
-  .pricing-sub {
-    text-align: center; font-size: 13px; color: var(--text-dim);
-    margin-bottom: 32px; line-height: 1.7;
-  }
-  .pricing-cards { display: flex; flex-direction: column; gap: 0; border-radius: 18px; overflow: hidden; border: 1.5px solid var(--border); box-shadow: 0 2px 16px rgba(42,35,24,0.06); }
-  .pricing-card {
-    background: var(--card);
-    padding: 22px 22px 20px; border: none; border-bottom: 1.5px solid var(--border);
-    position: relative;
-  }
-  .pricing-card:last-child { border-bottom: none; }
-  .pricing-card.featured {
-    background: #f0f6f0;
-    border-bottom: 1.5px solid var(--border);
-  }
-  .pricing-badge {
-    position: absolute; top: 14px; right: 16px;
-    background: var(--accent); color: #fff;
-    font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px;
-    letter-spacing: 0.04em; white-space: nowrap;
-  }
-  .pricing-tier {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-    color: var(--text-dim); text-transform: uppercase; margin-bottom: 6px;
-  }
-  .pricing-price {
-    font-size: clamp(28px, 7vw, 38px); font-weight: 900;
-    letter-spacing: -0.04em; color: var(--text); line-height: 1;
-    margin-bottom: 4px;
-  }
-  .pricing-price span { font-size: 14px; font-weight: 400; color: var(--text-dim); letter-spacing: 0; }
-  .pricing-desc { font-size: 13px; color: var(--text-mid); margin-bottom: 16px; line-height: 1.7; }
-  .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-  .pricing-features li {
-    font-size: 13px; color: var(--text-mid); display: flex; align-items: flex-start; gap: 8px; line-height: 1.6;
-  }
-  .pricing-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-  .pricing-features li.dim { color: var(--text-dim); }
-  .pricing-features li.dim::before { content: '—'; color: var(--border); }
-  .pricing-note { font-size: 11px; color: var(--text-dim); text-align: center; margin-top: 16px; }
-  /* ─── GRAIN LIKE BUTTON ─── */
-  .grain-like-btn {
-    display: flex; align-items: center; justify-content: center;
-    gap: 7px; width: 100%; margin-top: 16px;
-    padding: 13px 16px; border-radius: 11px;
-    font-size: 14px; font-weight: 700; cursor: pointer;
-    border: 1.5px solid var(--border); background: var(--bg);
-    color: var(--text-mid); letter-spacing: -0.01em;
-    position: relative; overflow: hidden;
-    transition: background 0.2s, border-color 0.2s, color 0.2s;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .grain-like-btn:hover { background: var(--bg2); border-color: var(--accent-s); color: var(--accent); }
-  .grain-like-btn.featured-btn {
-    background: var(--accent); color: #fff; border-color: var(--accent);
-    box-shadow: 0 4px 16px rgba(77,127,77,0.22);
-  }
-  .grain-like-btn.featured-btn:hover { background: #3d6e3d; }
-  .grain-like-btn.liked {
-    background: #eef5ec; border-color: var(--accent); color: var(--accent);
-  }
-  .grain-like-btn.featured-btn.liked {
-    background: #2e5e2e; border-color: #2e5e2e; color: #fff;
-  }
-  .like-icon {
-    display: inline-flex; align-items: center; justify-content: center;
-    transition: transform 0.1s;
-  }
-  .like-icon svg { transition: fill 0.2s, stroke 0.2s; }
-  .grain-like-btn.liked .like-icon { animation: grainPop 0.45s cubic-bezier(0.22,1,0.36,1) both; }
-  .grain-like-btn.liked .like-icon svg { fill: var(--accent); stroke: var(--accent); }
-  .grain-like-btn.featured-btn.liked .like-icon svg { fill: #fff; stroke: #fff; }
-  .like-count {
-    font-size: 12px; font-weight: 600; opacity: 0.65;
-    min-width: 14px; text-align: right;
-  }
-  @keyframes grainPop {
-    0%   { transform: scale(1); }
-    30%  { transform: scale(1.6) rotate(-12deg); }
-    55%  { transform: scale(0.88) rotate(6deg); }
-    75%  { transform: scale(1.18) rotate(-3deg); }
-    100% { transform: scale(1) rotate(0deg); }
-  }
-  /* 파동 효과 */
-  .grain-ripple {
-    position: absolute; border-radius: 50%;
-    background: rgba(77,127,77,0.18);
-    transform: scale(0); animation: rippleOut 0.55s ease-out forwards;
-    pointer-events: none;
-  }
-  @keyframes rippleOut {
-    to { transform: scale(4); opacity: 0; }
-  }
-  /* 파티클 (씨앗) */
-  .grain-particle {
-    position: fixed; pointer-events: none; z-index: 9999;
-    font-size: 14px; animation: particleFly 0.7s ease-out forwards;
-  }
-  @keyframes particleFly {
-    0%   { opacity: 1; transform: translate(0,0) scale(1); }
-    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.4); }
-  }
-
-  /* 대기자 카운터 */
-  .waiting-strip {
-    text-align: center; padding: 16px 20px 0;
-    font-size: 13px; color: var(--text-mid); line-height: 1.7;
-  }
-  .waiting-strip strong { color: var(--accent); font-weight: 800; font-size: 15px; }
-
-  /* ─── PRICING MODAL ─── */
-  .modal-overlay {
-    display: none; position: fixed; inset: 0; z-index: 999;
-    background: rgba(38,32,26,0.48); backdrop-filter: blur(2px);
-    align-items: flex-end; justify-content: center;
-  }
-  .modal-overlay.open { display: flex; }
-  .modal-box {
-    background: var(--card); border-radius: 24px 24px 0 0;
-    padding: 32px 24px 48px; width: 100%; max-width: 480px;
-    animation: slideUp 0.28s cubic-bezier(0.22,1,0.36,1) both;
-  }
-  @keyframes slideUp {
-    from { transform: translateY(40px); opacity: 0; }
-    to   { transform: translateY(0);    opacity: 1; }
-  }
-  .modal-handle {
-    width: 36px; height: 4px; background: var(--border);
-    border-radius: 2px; margin: 0 auto 24px;
-  }
-  .modal-plan {
-    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-    color: var(--accent); background: rgba(77,127,77,0.1);
-    padding: 3px 10px; border-radius: 20px; margin-bottom: 12px;
-  }
-  .modal-title {
-    font-size: 20px; font-weight: 800; color: var(--text);
-    letter-spacing: -0.03em; line-height: 1.3; margin-bottom: 8px;
-  }
-  .modal-desc {
-    font-size: 14px; color: var(--text-mid); line-height: 1.8; margin-bottom: 24px;
-  }
-  .modal-cta {
-    display: block; width: 100%; padding: 16px; border-radius: 13px;
-    background: var(--accent); color: #fff;
-    font-size: 16px; font-weight: 700; border: none; cursor: pointer;
-    box-shadow: 0 4px 16px rgba(77,127,77,0.26); margin-bottom: 10px;
-    transition: transform 0.15s;
-  }
-  .modal-cta:hover { transform: translateY(-2px); }
-  .modal-close {
-    display: block; width: 100%; padding: 13px; border-radius: 13px;
-    background: transparent; color: var(--text-dim);
-    font-size: 14px; border: 1px solid var(--border); cursor: pointer;
-  }
-  .modal-notice {
-    font-size: 11px; color: var(--text-dim); text-align: center;
-    margin-top: 14px; line-height: 1.7;
-  }
-
-  /* ─── CRISIS ─── */
-  .crisis { padding: 0 20px 44px; max-width: 480px; margin: 0 auto; }
-  .crisis-box {
-    border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px;
-    text-align: center; font-size: 13px; color: var(--text-dim); line-height: 1.85;
-    background: var(--card);
-  }
-  .crisis-box a { color: var(--warm); text-decoration: none; font-weight: 600; }
-
-  /* ─── CTA ─── */
-  .cta {
-    padding: 64px 20px 100px; text-align: center;
-    background:
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E"),
-      linear-gradient(180deg, var(--bg2) 0%, #f5f0e8 100%);
-  }
-  .cta h2 {
-    font-size: clamp(23px, 6vw, 38px); font-weight: 800;
-    letter-spacing: -0.03em; line-height: 1.22; margin-bottom: 12px; color: var(--text);
-  }
-  .cta h2 .a { color: var(--accent); }
-  .cta > p { font-size: 15px; color: var(--text-mid); margin-bottom: 32px; line-height: 1.8; }
-  .form { max-width: 300px; margin: 0 auto; }
-  .form input {
-    display: block; width: 100%; padding: 16px 18px; border-radius: 13px;
-    border: 1.5px solid var(--border); background: var(--card);
-    color: var(--text); font-size: 16px; outline: none;
-    margin-bottom: 8px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    -webkit-appearance: none;
-  }
-  .form input:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(77,127,77,0.12);
-  }
-  .form input::placeholder { color: var(--text-dim); }
-  .form button {
-    display: block; width: 100%; padding: 16px; border-radius: 13px;
-    background: var(--accent); color: #fff;
-    font-size: 16px; font-weight: 700; border: none; cursor: pointer;
-    transition: transform 0.18s cubic-bezier(0.22,1,0.36,1),
-                box-shadow 0.18s cubic-bezier(0.22,1,0.36,1);
-    box-shadow: 0 4px 16px rgba(77,127,77,0.26);
-  }
-  .form button:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(77,127,77,0.34); }
-  .form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
-  .form-note { font-size: 12px; color: var(--text-dim); margin-top: 9px; }
-
-  /* ─── CTA 대기자 카운터 ─── */
-  .cta-waiting {
-    display: flex; align-items: center; justify-content: center;
-    gap: 8px; margin-top: 20px;
-    font-size: 13px; color: var(--text-mid); line-height: 1.6;
-    opacity: 0; transform: translateY(6px);
-    transition: opacity 0.5s, transform 0.5s;
-  }
-  .cta-waiting.visible { opacity: 1; transform: none; }
-  .cta-waiting-num {
-    font-size: 18px; font-weight: 900; color: var(--accent);
-    letter-spacing: -0.02em; line-height: 1;
-  }
-  .cta-waiting-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); opacity: 0.5;
-    animation: pulse-dot 2s ease-in-out infinite;
-    flex-shrink: 0;
-  }
-  @keyframes pulse-dot {
-    0%, 100% { opacity: 0.35; transform: scale(1); }
-    50%       { opacity: 0.9;  transform: scale(1.3); }
-  }
-  .status { display: none; margin-top: 16px; padding: 16px; border-radius: 13px; font-size: 14px; line-height: 1.7; }
-  .status.ok  { background: #eef5ec; border: 1px solid #b4d0b4; color: #2e5e2e; }
-  .status.err { background: #fdf0ee; border: 1px solid #e4b0aa; color: #6e3030; }
-
-  @media (max-width: 375px) {
-    .h1-main { font-size: 36px; letter-spacing: -0.04em; }
-    .btn { padding: 18px 28px; font-size: 16px; }
-    .day { width: 26px; height: 26px; font-size: 9px; }
-    .trust-items { gap: 14px; }
-    .how-item { grid-template-columns: 40px 1fr; }
-    .grad-card { width: 190px; padding: 22px 18px 18px; }
-    .grad-feature { padding: 14px 15px; }
-  }
-</style>
+    /* 모바일 hover 차단 — 토큰의 hover: none 패턴 일관 적용 */
+    @media (hover: none) {
+      .lp-cta-btn:hover {
+        transform: none;
+        box-shadow: var(--shadow-accent);
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="au1" style="text-align:center;">
-    <div class="brand-wordmark">
-      <span class="brand-kr">결</span>
-      <span class="brand-dot">·</span>
-      <span class="brand-en">Grain</span>
-    </div>
-    <span class="brand-sub">감정케어 &nbsp;·&nbsp; 21일 완주</span>
-  </div>
-  <h1 class="au2">
-    <span class="h1-scene">아이 재우고 멍하니 앉아있는</span>
-    <span class="h1-main">그 새벽을<br><span class="a">알아요</span></span>
-  </h1>
-  <p class="hero-sub au3">
-    그 감정, 이상한 게 아니에요.<br>
-    여기선 혼자가 아니어도 돼요.
-  </p>
-  <div class="au4" style="display:flex;flex-direction:column;gap:10px;align-items:center;position:relative;z-index:1;">
-    <button class="btn" onclick="document.querySelector('.cta').scrollIntoView({behavior:'smooth'})">
-      무료로 오픈 알림 받기
-    </button>
-    <button class="btn-outline" onclick="document.querySelector('.pricing').scrollIntoView({behavior:'smooth'})">
-      요금제 보기
-    </button>
-  </div>
-  <p class="btn-note au5" style="margin-top:48px;padding-bottom:8px;">지금은 무료 신청만 · 결제는 오픈 후</p>
-</section>
-
-<!-- STORY -->
-<section class="story">
-  <p class="story-intro reveal">이 중에 하나라도 떠오른다면,<br><span style="font-weight:600;color:var(--text);">혼자가 아니에요.</span></p>
-  <div class="scene reveal">
-    <span class="scene-time">#고립</span>
-    <p class="scene-text">
-      말 한마디 할 사람이 없는 것 같은 날.
-      <span class="quiet">
-        곁에 사람이 있어요.<br>
-        그런데 이상하게 혼자예요.<br>
-        이걸 어디다 말해야 할지 몰랐어요.
-      </span>
-    </p>
-  </div>
-  <div class="scene reveal">
-    <span class="scene-time">#소진</span>
-    <p class="scene-text">
-      밥을 언제 제대로 먹었는지 기억이 안 나요.
-      <span class="quiet">
-        어깨도 손목도 너덜너덜해요.<br>
-        쉰다는 게 어떤 건지도 가물가물해요.<br>
-        나도 좀 돌봐줬으면 싶어요.
-      </span>
-    </p>
-  </div>
-  <div class="scene reveal">
-    <span class="scene-time">#번아웃</span>
-    <p class="scene-text">
-      왜 우는지 모르겠어요.
-      <span class="quiet">
-        좋은 것들이 있어요.<br>
-        그런데 이게 언제 끝나는 건지 몰라요.<br>
-        이런 내가 이상한 건지도요.
-      </span>
-    </p>
-  </div>
-</section>
-
-<!-- VISION -->
-<section class="vision">
-  <div class="vision-inner">
-    <h2 class="reveal"><span class="a">그 순간,</span><br>누군가 이렇게 말해줬다면.</h2>
-    <div class="vision-card reveal">
-      <p>
-        잠도 못 자고 지쳐서, 그냥 한 줄 썼어요.<br>
-        "오늘 너무 힘들었어."<br><br>
-        <strong>"많이 지쳤겠다. 오늘 하루 잘 버텼어."</strong><br><br>
-        그 한 마디 읽고 그냥 울었어요.<br>
-        기분 나쁜 눈물이 아니었어요.
-      </p>
-      <span class="vision-card-source">신생아 둘째 엄마 · 새벽 수유 중</span>
-    </div>
-    <div class="vision-card reveal">
-      <p>
-        논리도 없고, 조언도 없고.<br>
-        그냥 "그랬구나" 한 마디.<br><br>
-        <strong>그게 필요했던 거더라고요.</strong>
-      </p>
-      <span class="vision-card-source">두 아이 육아 중 · 말할 곳 없어서</span>
-    </div>
-  </div>
-</section>
-
-<!-- HOW -->
-<section class="how">
-  <h2 class="reveal" style="text-align:center; font-size:clamp(21px,5.2vw,34px); font-weight:800; letter-spacing:-0.03em; line-height:1.28; margin-bottom:24px; color:var(--text);">
-    그 순간에 필요했던 말을<br><span class="a">이제 건넬 수 있어요.</span>
-  </h2>
-  <div class="how-list">
-    <div class="how-item reveal">
-      <span class="how-n">01</span>
-      <div class="how-b">
-        <h3>오늘 감정 온도 체크인</h3>
-        <p>딱 30초예요. 숫자 하나 고르면 돼요.<br>기록이 쌓일수록 내가 보이기 시작해요.</p>
-        <span class="badge">가장 작은 행동부터</span>
+  <!-- 1. Hero — 공감 -->
+  <section class="lp-hero">
+    <div class="container">
+      <span class="lp-eyebrow au au-1">결 · 사전신청</span>
+      <h1 class="au au-2">육아하다 이러지도<br>저러지도 못한 적 있으세요?</h1>
+      <p class="sub au au-3">혼자 삼키지 않아도 돼요.<br>매일 5분, 어제의 나와 오늘의 나를 들여다봐요.</p>
+      <div class="lp-scroll-hint au au-4" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 4v12M4 10l6 6 6-6" stroke="var(--accent-soft)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
     </div>
-    <div class="how-item reveal reveal-d1">
-      <span class="how-n">02</span>
-      <div class="how-b">
-        <h3>오늘의 하나 — 내 온도에 맞는 미션</h3>
-        <p>체크인하면 오늘 딱 하나만 드려요.<br>무너질 것 같은 날에도 할 수 있는 것으로.</p>
-        <span class="badge">오늘 1개 행동</span>
-      </div>
-    </div>
-    <div class="how-item reveal reveal-d2">
-      <span class="how-n">03</span>
-      <div class="how-b">
-        <h3>화가 치밀 때 — 비상 호흡</h3>
-        <p>터지기 직전에 버튼 하나 누르세요.<br>60초 호흡 가이드가 바로 시작돼요.</p>
-        <span class="badge">지금 당장 쓸 수 있어요</span>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- HOOK — 21일 여정 -->
-<section class="hook">
-  <div class="hook-inner">
-    <span class="hook-eyebrow reveal">같이 가요</span>
-    <h2 class="reveal">매일 한 줄이 쌓이면<br><span class="a">내가 보이기 시작해요</span></h2>
-    <p class="hook-p reveal">
-      언제 가장 힘들었는지.<br>
-      뭐가 나를 <strong>조금 낫게 만들었는지.</strong><br>
-      말로 설명 못 했던 것들이<br>
-      천천히 윤곽이 잡혀요.
-    </p>
-    <div class="days reveal" id="days"></div>
-    <p class="hook-note reveal">오픈 준비 중 — 먼저 신청한 분께 가장 먼저 알려드려요.</p>
-  </div>
-</section>
-
-<!-- BETA -->
-<section class="beta">
-  <div class="beta-inner">
-    <span class="beta-eyebrow reveal">베타 테스터 모집 중</span>
-    <h2 class="reveal">먼저 써보는 분께<br><span class="a">특별한 혜택을 드려요.</span></h2>
-    <p class="beta-sub reveal">
-      결은 아직 오픈 전이에요.<br>
-      지금 신청하시면 정식 오픈 전 가장 먼저 초대해드립니다.
-    </p>
-    <div class="beta-cards">
-      <div class="beta-card highlight reveal">
-        <div class="beta-icon">01</div>
-        <div>
-          <h4>Premium 30일 무료 — 출시 직후 바로</h4>
-          <p>정식 오픈 즉시 Premium 플랜 30일을 무료로 드려요.<br>카드 등록 없이, 조건 없이.</p>
-        </div>
-      </div>
-      <div class="beta-card reveal">
-        <div class="beta-icon">02</div>
-        <div>
-          <h4>베타 전용 요금 — 영구 50% 할인</h4>
-          <p>베타 테스터는 정식 오픈 후에도 영구 50% 할인 요금이 적용돼요.<br>Standard 기준 월 1,950원.</p>
-        </div>
-      </div>
-      <div class="beta-card reveal">
-        <div class="beta-icon">03</div>
-        <div>
-          <h4>기능 제안 참여 — 결의 방향을 같이 만들어요</h4>
-          <p>베타 테스터의 피드백이 결의 다음 기능을 결정해요.<br>사용하면서 불편한 점, 원하는 것 직접 말씀해 주세요.</p>
-        </div>
-      </div>
-    </div>
-    <p class="beta-limit reveal">
-      베타 테스터 모집은 <strong>선착순 100명</strong>으로 마감돼요.<br>
-      신청 후 순서대로 초대장을 보내드릴게요.
-    </p>
-  </div>
-</section>
-
-<!-- TRUST -->
-<div class="trust">
-  <div class="trust-items reveal">
-    <div class="trust-item"><div class="trust-dot"></div>이메일만, 카드 없음</div>
-    <div class="trust-item"><div class="trust-dot"></div>스팸 없음</div>
-    <div class="trust-item"><div class="trust-dot"></div>언제든 취소</div>
-  </div>
-</div>
-
-<!-- CRISIS -->
-<div class="crisis">
-  <div class="crisis-box reveal">
-    지금 너무 힘드신 분 — <a href="tel:1393">자살예방상담전화 1393</a> (24시간, 무료통화)<br>
-    위기 상황이라면 전문 상담사와 직접 연결하세요.
-  </div>
-</div>
-
-<!-- GRADUATION -->
-<section class="graduation">
-  <div class="graduation-inner">
-    <span class="graduation-eyebrow reveal">21일 뒤에 생기는 것</span>
-    <h2 class="reveal">21일을 버틴 게 아니에요.<br><span class="a">나를 돌보는 법을 배운 거예요.</span></h2>
-    <p class="graduation-sub reveal">
-      완주한 날, 결이 기억해줘요.<br>
-      21일 동안의 감정이 한 장에 담겨요.
-    </p>
-
-    <div class="grad-card-wrap reveal">
-      <div class="grad-card">
-        <p class="grad-card-logo">결 (GRAIN) · 21일 완주카드</p>
-        <p class="grad-card-title">21일을<br>다 걸었어요</p>
-        <div class="grad-temp-bar"><div class="grad-temp-fill"></div></div>
-        <div class="grad-card-stats">
-          <div class="grad-stat">
-            <span class="grad-stat-label">시작 감정 온도</span>
-            <span class="grad-stat-value">36.5°</span>
-          </div>
-          <div class="grad-stat">
-            <span class="grad-stat-label">완주 감정 온도</span>
-            <span class="grad-stat-value">38.8°</span>
-          </div>
-          <div class="grad-stat">
-            <span class="grad-stat-label">총 체크인</span>
-            <span class="grad-stat-value">19회</span>
-          </div>
-          <div class="grad-stat">
-            <span class="grad-stat-label">가장 많이 한 미션</span>
-            <div class="mission-rotate" id="missionRotate">
-              <span class="active">화장실 손 씻으러 가기</span>
-              <span>물 한 잔 마시기</span>
-              <span>창문 열고 숨 한 번</span>
-              <span>5분 아무것도 안 하기</span>
-              <span>좋아하는 노래 1곡</span>
-              <span>거울 보고 내 이름 부르기</span>
-            </div>
-          </div>
-        </div>
-        <p class="grad-card-msg">"그 새벽, 당신은<br>포기하지 않았어요."</p>
-      </div>
-      <div class="grad-card-shadow"></div>
-    </div>
-
-    <div class="graduation-features">
-      <div class="grad-feature reveal">
-        <span class="grad-feature-icon" style="color:var(--accent);background:rgba(77,127,77,0.12);width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <!-- 감정 그래프 — 데이터 직관 -->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </span>
-        <div class="grad-feature-text">
-          <p class="feat-sub">21일 감정 데이터</p>
-          <h4>내 패턴이 한 장에 담겨요</h4>
-          <p>어떤 날 가장 힘들었는지, 어떤 미션이 버티게 했는지.<br>"그래도 했어요" — 가장 힘든 날도 기록돼요.</p>
-        </div>
-      </div>
-      <div class="grad-feature reveal">
-        <span class="grad-feature-icon" style="color:var(--warm);background:rgba(154,104,64,0.12);width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <!-- 봉투 — 편지 직관 -->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </span>
-        <div class="grad-feature-text">
-          <p class="feat-sub">첫날의 나에게</p>
-          <h4>21일 뒤, 편지가 도착해요</h4>
-          <p>처음 체크인한 날의 감정 온도를 기억해 뒀다가<br>완주한 날 돌려줘요. "그때 그 마음 기억하나요?"</p>
-        </div>
-      </div>
-      <div class="grad-feature reveal">
-        <span class="grad-feature-icon" style="color:var(--accent);background:rgba(77,127,77,0.12);width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <!-- 씨앗/새싹 — 성장 직관 -->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C12 7 7 4 3 6c4 0 7 3 9 6"/><path d="M12 12c0-5 5-8 9-6-4 0-7 3-9 6"/></svg>
-        </span>
-        <div class="grad-feature-text">
-          <p class="feat-sub">씨앗 → 새싹 → 꽃</p>
-          <h4>두 번째 여정은 달라요</h4>
-          <p>1회차, 2회차, 3회차. 같은 카드는 두 번 없어요.<br>두 번째 여정은 이미 다른 나로 시작돼요.</p>
-        </div>
-      </div>
-      <div class="grad-feature reveal">
-        <span class="grad-feature-icon" style="color:var(--text-mid);background:rgba(110,94,78,0.1);width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <!-- 사람+하트 — 관계 공유 직관 -->
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </span>
-        <div class="grad-feature-text">
-          <p class="feat-sub">가장 가까운 사람에게</p>
-          <h4>"나 이거 해냈어" 한 마디</h4>
-          <p>카카오톡으로 바로 전송할 수 있어요.<br>배우자, 친구, 가족 — 누구에게든.</p>
-        </div>
-      </div>
-    </div>
-
-    <p class="graduation-note reveal">
-      완주카드는 인스타 스토리(9:16) PNG로 저장돼요<br>
-      완주 직후 <span style="color:var(--accent);font-weight:600;">Premium 7일 무료 체험</span>이 제공돼요
-    </p>
-
-    <button class="more-features-btn reveal" onclick="openFeaturesSheet()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-      이런 기능도 있어요
-    </button>
-  </div>
-</section>
-
-<!-- FEATURES SHEET -->
-<div class="features-sheet-overlay" id="featuresOverlay" onclick="closeFeaturesSheet()"></div>
-<div class="features-sheet" id="featuresSheet">
-  <div class="sheet-handle"></div>
-  <p class="sheet-title">결이 준비한 것들</p>
-  <p class="sheet-sub">완주카드 외에도, 매일이 조금 다르게 흘러가도록<br>이런 것들이 함께해요.</p>
-  <div class="sheet-feature-list">
-
-    <div class="sheet-feature">
-      <div class="sheet-feature-icon" style="background:rgba(231,76,60,0.08);">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <div class="sheet-feature-body">
-        <h4>터지기 직전에 — 비상 호흡</h4>
-        <p>버튼 하나로 60초 호흡 가이드 시작.<br>감정이 넘치는 순간을 위해 항상 켜져 있어요.</p>
-        <span class="sheet-badge free">Free · 언제든</span>
-      </div>
-    </div>
-
-    <div class="sheet-feature">
-      <div class="sheet-feature-icon" style="background:rgba(77,127,77,0.08);">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      </div>
-      <div class="sheet-feature-body">
-        <h4>오늘의 하나 — 감정 체크인</h4>
-        <p>하루에 딱 한 번. 지금 몇 도예요?<br>체크인이 쌓이면 내 패턴이 보여요.</p>
-        <span class="sheet-badge free">Free · 하루 1회</span>
-      </div>
-    </div>
-
-    <div class="sheet-feature">
-      <div class="sheet-feature-icon" style="background:rgba(77,127,77,0.1);">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg>
-      </div>
-      <div class="sheet-feature-body">
-        <h4>7일마다 — 감정 흐름 리포트</h4>
-        <p>일주일이 어땠는지 숫자로 볼 수 있어요.<br>내가 가장 힘들었던 요일도 담겨요.</p>
-        <span class="sheet-badge prem">Premium</span>
-      </div>
-    </div>
-
-    <div class="sheet-feature">
-      <div class="sheet-feature-icon" style="background:rgba(154,104,64,0.08);">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--warm)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-      </div>
-      <div class="sheet-feature-body">
-        <h4>버티는 날에는 — 공감 응답</h4>
-        <p>체크인하면 결이 한 줄 답해줘요.<br>판단 없이, 그냥 옆에 있는 것처럼.</p>
-        <span class="sheet-badge std">Standard 이상</span>
-      </div>
-    </div>
-
-    <div class="sheet-feature">
-      <div class="sheet-feature-icon" style="background:rgba(77,127,77,0.08);">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      </div>
-      <div class="sheet-feature-body">
-        <h4>21일 스트릭 — 흘러간 날이 쌓여요</h4>
-        <p>이어지는 체크인이 시각적으로 쌓여요.<br>끊겨도 괜찮아요. 다시 시작하면 돼요.</p>
-        <span class="sheet-badge std">Standard 이상</span>
-      </div>
-    </div>
-
-  </div>
-  <button class="sheet-close" onclick="closeFeaturesSheet()">닫기</button>
-</div>
-
-<!-- CTA -->
-<section class="cta">
-  <h2 class="reveal">그 감정,<br><span class="a">더 이상 혼자 삼키지 않아도 돼요.</span></h2>
-  <p class="reveal">이메일 하나면 돼요.<br>오픈 즉시 가장 먼저 알려드릴게요.</p>
-  <div class="form reveal">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe3JQ7qZBNresOkBpivpDO9-PeDpPsCZcFV8HFcpCS_ZFt4Jw/viewform" target="_blank" class="btn" style="display:inline-block;text-decoration:none;">오픈 알림 받기 →</a>
-      <p class="form-note">스팸 없음 · 언제든 취소 · 결제 불필요</p>
-    <div class="status ok"  id="statusOk">신청 완료됐어요 🌿<br><span style="font-size:13px;opacity:0.8;">오픈 즉시 가장 먼저 알려드릴게요. 기다려 주셔서 고마워요.</span></div>
-    <div class="status err" id="statusErr">잠시 문제가 생겼어요. moonchang969@gmail.com으로 연락해주세요.</div>
-  </div>
-  <div class="cta-waiting" id="ctaWaiting">
-    <div class="cta-waiting-dot"></div>
-    <span><span class="cta-waiting-num" id="ctaWaitingNum">248</span>명이 함께 기다리고 있어요</span>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section class="pricing" id="pricing">
-  <h2 class="reveal">오픈 후 요금제</h2>
-  <p class="pricing-sub reveal">아직 결제는 안 돼요. 어떤 플랜이 마음에 드는지 눌러만 봐도 돼요.</p>
-  <div class="pricing-cards">
-
-    <div class="pricing-card reveal">
-      <p class="pricing-tier">Free</p>
-      <p class="pricing-price">0원 <span>/ 영구 무료</span></p>
-      <p class="pricing-desc">가볍게 시작해보고 싶을 때</p>
-      <ul class="pricing-features">
-        <li>감정 온도 체크인 하루 1회</li>
-        <li>오늘의 하나 미션</li>
-        <li>비상 호흡 (언제든)</li>
-        <li class="dim">21일 여정</li>
-        <li class="dim">7일 리포트 · 완주카드</li>
+  <!-- 2. 공감 섹션 — 체크리스트 -->
+  <section class="lp-section lp-empathy">
+    <div class="container">
+      <h2>혹시 오늘도<br>이런 하루였나요?</h2>
+      <ul class="lp-empathy-list">
+        <li>아이에게 소리지르고 뒤늦게 혼자 후회한 적이 있다.</li>
+        <li>잠깐 혼자이고 싶은데, 그 생각조차 아이에게 미안해진다.</li>
+        <li>아이를 사랑하는데, 정작 내 자신은 점점 사라지는 것 같다.</li>
       </ul>
-      <button class="pricing-btn grain-like-btn" data-plan="Free" data-price="0원" onclick="grainLike(this,event)">
-        <span class="like-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
-        <span class="like-text">관심 있어요</span>
-        <span class="like-count" id="count-Free">0</span>
-      </button>
+      <p class="lp-empathy-bridge">힘내라, 지나간다.<br>그 말밖에 못 들었던 날들이 있었나요?</p>
+      <p class="lp-empathy-sub">당신만 그런 게 아니에요.<br>그 감정을 혼자 눌러담지 않아도 돼요.</p>
     </div>
+  </section>
 
-    <div class="pricing-card featured reveal">
-      <span class="pricing-badge">추천</span>
-      <p class="pricing-tier">Standard</p>
-      <p class="pricing-price">3,900원 <span>/ 월</span></p>
-      <p class="pricing-desc">매일 털어놓고 싶은 분께</p>
-      <ul class="pricing-features">
-        <li>체크인 · 미션 무제한</li>
-        <li>비상 호흡 (언제든)</li>
-        <li>21일 회복 여정</li>
-        <li>21일 스트릭 · 공감 응답</li>
-        <li class="dim">7일 리포트 · 완주카드</li>
-      </ul>
-      <button class="pricing-btn featured-btn grain-like-btn" data-plan="Standard" data-price="3,900원/월" onclick="grainLike(this,event)">
-        <span class="like-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
-        <span class="like-text">관심 있어요</span>
-        <span class="like-count" id="count-Standard">0</span>
-      </button>
+  <!-- 3. 앱 소개 — 가능성 -->
+  <section class="lp-section lp-intro">
+    <div class="container">
+      <h2>결이 곁에 있는 5분</h2>
+      <p class="lead">하루 5분이면 돼요.<br>오늘의 마음을 잠시 들여다보고,<br>나에게 줄 작은 돌봄 하나를 함께 정해봐요.</p>
+
+      <div class="lp-feature reveal">
+        <div class="lp-feature-icon" aria-hidden="true">🌡</div>
+        <div>
+          <h3>오늘의 마음 온도</h3>
+          <p>"오늘은 어제보다 조금 나아진 것 같아요."<br>한 문장으로 적으면, 어제의 나와 비교해 작은 변화를 알려드려요.</p>
+        </div>
+      </div>
+      <div class="lp-feature reveal reveal-d1">
+        <div class="lp-feature-icon" aria-hidden="true">🌱</div>
+        <div>
+          <h3>오늘 나에게 줄 한 가지</h3>
+          <p>아무것도 하기 싫은 날도 괜찮아요.<br>방전된 날에도 할 수 있는 작은 돌봄 하나만 골라드려요.</p>
+        </div>
+      </div>
+      <div class="lp-feature reveal reveal-d2">
+        <div class="lp-feature-icon" aria-hidden="true">🫧</div>
+        <div>
+          <h3>혼자가 아니라는 신호</h3>
+          <p>오늘 비슷한 마음으로 결을 켠 엄마가 있어요.<br>그 숫자를 함께 보여드려요.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="pricing-card reveal">
-      <p class="pricing-tier">Premium</p>
-      <p class="pricing-price">9,900원 <span>/ 월</span></p>
-      <p class="pricing-desc">21일을 온전히 기록하고 싶을 때</p>
-      <ul class="pricing-features">
-        <li>스탠다드 전체 포함</li>
-        <li>7일 감정 리포트</li>
-        <li style="font-weight:600;color:var(--text);">완주카드 — 21일 감정 데이터 + 편지</li>
-        <li>인스타 스토리용 PNG 저장</li>
-        <li>다음 여정 (2회차) 자동 연결</li>
-      </ul>
-      <button class="pricing-btn grain-like-btn" data-plan="Premium" data-price="9,900원/월" onclick="grainLike(this,event)">
-        <span class="like-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
-        <span class="like-text">관심 있어요</span>
-        <span class="like-count" id="count-Premium">0</span>
-      </button>
+  <!-- 3.5 공감 목소리 — 신뢰 신호 (W8: 효과 단정 없음, 실제 발화 패턴만) -->
+  <section class="lp-section lp-voices">
+    <div class="container">
+      <h2 class="reveal">이런 마음, 나만 있는 게 아니었어요</h2>
+      <div class="lp-voice-list">
+        <blockquote class="lp-voice reveal">
+          <p>"나만 이런가 싶어 우울해요. 취미생활이라도 하고 싶은데 시간도 없고 의욕도 없어요."</p>
+          <footer>— 결혼 6년차 전업맘</footer>
+        </blockquote>
+        <blockquote class="lp-voice reveal reveal-d1">
+          <p>"독박육아 지친다 힘들다 말해봤자 다들 그렇다 힘내라 지나간다, 이런 이야기밖에 못 들었어요."</p>
+          <footer>— 두 아이 엄마</footer>
+        </blockquote>
+      </div>
+      <p class="lp-voice-note reveal reveal-d2">맘카페에서 수집한 실제 목소리입니다.</p>
     </div>
+  </section>
 
-  </div>
-  <p class="pricing-note reveal">※ 오픈 전 예정 가격이에요. 지금은 결제가 되지 않아요.</p>
-  <div class="waiting-strip" id="waitingStrip"></div>
-</section>
+  <!-- 4. 창업자 소개 — 신뢰 신호 -->
+  <section class="lp-section lp-founder">
+    <div class="container">
+      <div class="lp-founder-card reveal">
+        <div class="lp-founder-avatar" aria-hidden="true">🌱</div>
+        <div class="lp-founder-text">
+          <p class="lp-founder-name">문창현 · 결 만들고 있어요</p>
+          <p class="lp-founder-bio">
+            주변에서 육아로 힘들어하는 분들을 많이 봤어요.<br>
+            겉으로는 괜찮아 보이는데, 사실은 많이 지쳐있는.<br><br>
+            그 마음을 매일 5분이라도 꺼낼 수 있으면 달라질 것 같아서 만들고 있어요.<br>
+            직접 만드는 사람이 여기 있어요.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- PRICING MODAL -->
-<div class="modal-overlay" id="pricingModal" onclick="closeModal(event)">
-  <div class="modal-box">
-    <div class="modal-handle"></div>
-    <span class="modal-plan" id="modalPlan">Standard</span>
-    <p class="modal-title">관심 남겨주셔서 감사해요.</p>
-    <p class="modal-desc">
-      아직 결제는 열리지 않았어요.<br>
-      오픈 알림을 신청해두면 <strong>가장 먼저 초대</strong>해드릴게요.<br>
-      베타 기간에는 이 플랜도 할인 혜택이 있어요.
-    </p>
-    <button class="modal-cta" onclick="closeModalAndScroll()">오픈 알림 신청하기 →</button>
-    <button class="modal-close" onclick="closeModal()">닫기</button>
-    <p class="modal-notice">지금 버튼을 눌러도 결제는 되지 않아요.<br>이메일만 남겨두시면 오픈 즉시 연락드려요.</p>
-  </div>
-</div>
+  <!-- 5. CTA — 행동 -->
+  <section class="lp-cta">
+    <div class="container-narrow">
+      <h2>출시되면<br>가장 먼저 알려드릴게요</h2>
+      <p class="lead">이메일 하나만 남겨주세요.<br>결이 준비됐을 때, 딱 한 번만 알려드려요.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe3JQ7qZBNresOkBpivpDO9-PeDpPsCZcFV8HFcpCS_ZFt4Jw/viewform" class="lp-cta-btn" target="_blank" rel="noopener">
+        이메일 남기고 알림 받기
+      </a>
+      <p class="lp-cta-note">결제 없음 · 스팸 없음 · 언제든 취소 가능</p>
+    </div>
+  </section>
 
-<script>
-(function(){
-  const c=document.getElementById('days');
-  for(let i=1;i<=21;i++){
-    const d=document.createElement('div');
-    d.className='day'+(i<=7?' on':i===8?' now':'');
-    d.textContent=i; c.appendChild(d);
-  }
-})();
-(function(){
-  const els=document.querySelectorAll('.reveal');
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
-    });
-  },{threshold:0.08});
-  els.forEach(el=>io.observe(el));
-})();
-/* ── GRAIN LIKE SYSTEM ── */
-const PLANS=['Free','Standard','Premium'];
+  <!-- 위기 안내 (멘탈헬스 표준 신뢰 신호) -->
+  <section class="lp-crisis">
+    <div class="container">
+      <div class="crisis-banner">
+        지금 많이 힘드시다면, 전문 상담사가 24시간 곁에 있어요.<br>
+        <strong>정신건강위기상담전화 <a href="tel:15770199">1577-0199</a></strong> (24시간 · 무료)
+      </div>
+    </div>
+  </section>
 
-function _getClicks(){
-  return JSON.parse(localStorage.getItem('grain_pricing_clicks')||'{}');
-}
-function _getEmails(){
-  return JSON.parse(localStorage.getItem('grain_beta_emails')||'[]');
-}
+  <!-- 5. 하단 -->
+  <footer class="lp-footer">
+    <div class="container">
+      <p>입력하신 이메일은 결 출시 알림 발송 외 다른 용도로는 사용하지 않아요.</p>
+      <p>© 리소 · 결(Grain)</p>
+    </div>
+  </footer>
 
-const BASE_COUNT = 248; // 기본 설정값
-
-function updateWaitingCount(){
-  const clicks=_getClicks();
-  const emails=_getEmails();
-  // 중복 제거: 이메일 수 + 요금제 클릭한 고유 세션 수
-  const clickSessions=new Set();
-  PLANS.forEach(p=>{
-    const sess=JSON.parse(localStorage.getItem('grain_pricing_unique_'+p)||'[]');
-    sess.forEach(s=>clickSessions.add(s));
-  });
-  const realAdded=emails.length+clickSessions.size;
-  const displayTotal=BASE_COUNT+realAdded;
-
-  // 요금제 섹션 waiting-strip
-  const strip=document.getElementById('waitingStrip');
-  if(strip){
-    strip.innerHTML='지금 <strong>'+displayTotal+'명</strong>이 결을 기다리고 있어요';
-  }
-
-  // CTA 폼 아래 대기자 카운터
-  const ctaNum=document.getElementById('ctaWaitingNum');
-  const ctaBox=document.getElementById('ctaWaiting');
-  if(ctaNum) ctaNum.textContent=displayTotal.toLocaleString();
-  if(ctaBox) ctaBox.classList.add('visible');
-}
-
-function _ripple(btn, e){
-  const r=document.createElement('span');
-  r.className='grain-ripple';
-  const rect=btn.getBoundingClientRect();
-  const x=(e.clientX||rect.left+rect.width/2)-rect.left;
-  const y=(e.clientY||rect.top+rect.height/2)-rect.top;
-  const size=Math.max(rect.width,rect.height)*1.2;
-  r.style.cssText='width:'+size+'px;height:'+size+'px;left:'+(x-size/2)+'px;top:'+(y-size/2)+'px;';
-  btn.appendChild(r);
-  setTimeout(()=>r.remove(),600);
-}
-
-function _particles(btn){
-  const seeds=['🌱','✦','·','🌿'];
-  const rect=btn.getBoundingClientRect();
-  const cx=rect.left+rect.width/2;
-  const cy=rect.top+rect.height/2;
-  for(let i=0;i<6;i++){
-    const p=document.createElement('span');
-    p.className='grain-particle';
-    p.textContent=seeds[Math.floor(Math.random()*seeds.length)];
-    const angle=(Math.PI*2/6)*i + (Math.random()-0.5)*0.5;
-    const dist=40+Math.random()*30;
-    p.style.cssText='left:'+(cx-8)+'px;top:'+(cy-8)+'px;'+
-      '--tx:'+(Math.cos(angle)*dist)+'px;--ty:'+(Math.sin(angle)*dist-15)+'px;';
-    document.body.appendChild(p);
-    setTimeout(()=>p.remove(),800);
-  }
-}
-
-function grainLike(btn, e){
-  const plan=btn.getAttribute('data-plan');
-  const price=btn.getAttribute('data-price');
-  const isLiked=btn.classList.contains('liked');
-
-  // 리플 + 파티클
-  _ripple(btn, e);
-  if(!isLiked) _particles(btn);
-
-  // liked 토글
-  btn.classList.toggle('liked', !isLiked);
-  const icon=btn.querySelector('.like-icon');
-  const text=btn.querySelector('.like-text');
-  if(!isLiked){
-    text.textContent='관심 남겼어요';
-    if(icon) icon.style.animation='none';
-    requestAnimationFrame(()=>{ if(icon){ icon.style.animation=''; } });
-  } else {
-    text.textContent='관심 있어요';
-  }
-
-  // localStorage 클릭수
-  const countKey='grain_pricing_clicks';
-  const counts=_getClicks();
-  counts[plan]=(counts[plan]||0)+(isLiked?-1:1);
-  if(counts[plan]<0) counts[plan]=0;
-  localStorage.setItem(countKey,JSON.stringify(counts));
-
-  // 고유 세션 추적 (중복 제거용)
-  let sessId=sessionStorage.getItem('grain_sess');
-  if(!sessId){ sessId=Date.now().toString(36)+Math.random().toString(36).slice(2); sessionStorage.setItem('grain_sess',sessId); }
-  const uKey='grain_pricing_unique_'+plan;
-  const uList=JSON.parse(localStorage.getItem(uKey)||'[]');
-  if(!isLiked){
-    if(!uList.includes(sessId)) uList.push(sessId);
-  } else {
-    const idx=uList.indexOf(sessId); if(idx>-1) uList.splice(idx,1);
-  }
-  localStorage.setItem(uKey,JSON.stringify(uList));
-
-  // 카운트 표시 업데이트
-  const countEl=btn.querySelector('.like-count');
-  if(countEl) countEl.textContent=counts[plan]||0;
-
-  // 모달 열기
-  document.getElementById('modalPlan').textContent=plan+' · '+price;
-  document.getElementById('pricingModal').classList.add('open');
-
-  // 대기자 수 갱신
-  updateWaitingCount();
-}
-
-function closeModal(e){
-  if(!e||e.target===document.getElementById('pricingModal')||e.currentTarget===document.querySelector('.modal-close')){
-    document.getElementById('pricingModal').classList.remove('open');
-  }
-}
-function closeModalAndScroll(){
-  document.getElementById('pricingModal').classList.remove('open');
-  setTimeout(()=>document.querySelector('.cta').scrollIntoView({behavior:'smooth'}),200);
-}
-function submitForm(e){
-  e.preventDefault();
-  const btn=document.getElementById('submitBtn');
-  const ok=document.getElementById('statusOk');
-  const err=document.getElementById('statusErr');
-  btn.disabled=true; btn.textContent='처리 중…';
-  try{
-    const email=document.getElementById('emailInput').value;
-    const key='grain_beta_emails';
-    const list=_getEmails();
-    list.push({email,ts:new Date().toISOString()});
-    localStorage.setItem(key,JSON.stringify(list));
-    setTimeout(()=>{
-      ok.style.display='block';
-      document.getElementById('mainForm').style.display='none';
-      updateWaitingCount();
-    },400);
-  }catch(_){
-    err.style.display='block';
-    btn.disabled=false;
-    btn.textContent='오픈 알림 받기 →';
-  }
-}
-
-/* ── FEATURES SHEET ── */
-function openFeaturesSheet(){
-  document.getElementById('featuresOverlay').classList.add('open');
-  document.getElementById('featuresSheet').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeFeaturesSheet(){
-  document.getElementById('featuresOverlay').classList.remove('open');
-  document.getElementById('featuresSheet').classList.remove('open');
-  document.body.style.overflow='';
-}
-
-// 카운트 UI 갱신 (liked 상태 건드리지 않음)
-function refreshCounts(){
-  const counts=_getClicks();
-  PLANS.forEach(plan=>{
-    const el=document.getElementById('count-'+plan);
-    if(el) el.textContent=counts[plan]||0;
-  });
-  updateWaitingCount();
-}
-
-// 페이지 로드 시 초기화
-(function initCounts(){
-  const counts=_getClicks();
-  PLANS.forEach(plan=>{
-    const el=document.getElementById('count-'+plan);
-    if(el) el.textContent=counts[plan]||0;
-    // liked 상태 복원 (세션 기준)
-    const sessId=sessionStorage.getItem('grain_sess');
-    if(sessId){
-      const uList=JSON.parse(localStorage.getItem('grain_pricing_unique_'+plan)||'[]');
-      if(uList.includes(sessId)){
-        const btn=document.querySelector('[data-plan="'+plan+'"]');
-        if(btn){
-          btn.classList.add('liked');
-          const text=btn.querySelector('.like-text');
-          if(text) text.textContent='관심 남겼어요';
-        }
-      }
-    }
-  });
-  updateWaitingCount();
-})();
-
-// 다른 탭/창에서 변경 시 실시간 반영
-window.addEventListener('storage', function(e){
-  if(e.key && (e.key.startsWith('grain_pricing')||e.key==='grain_beta_emails')){
-    refreshCounts();
-  }
-});
-// 같은 탭에서도 3초마다 폴링 (BroadcastChannel 미지원 환경 대비)
-setInterval(refreshCounts, 3000);
-
-// 미션 로테이션
-(function(){
-  const wrap = document.getElementById('missionRotate');
-  if(!wrap) return;
-  const items = wrap.querySelectorAll('span');
-  let cur = 0;
-  setInterval(function(){
-    items[cur].classList.remove('active');
-    cur = (cur + 1) % items.length;
-    items[cur].classList.add('active');
-  }, 2200);
-})();
-</script>
+  <script>
+    (function() {
+      var els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function(el) { io.observe(el); });
+    })();
+  </script>
 </body>
 </html>
